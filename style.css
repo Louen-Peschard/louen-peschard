@@ -23,29 +23,10 @@
 
 html {
   box-sizing: border-box;
-
-  /* Set font size for easy rem calculations
-   * default document font size = 16px, 1rem = 16px, 100% = 16px
-   * (100% / 16px) * 10 = 62.5%, 1rem = 10px, 62.5% = 10px
-  */
   font-size: 62.5%;
   scroll-behavior: smooth;
 }
 
-/* A few media query to set some font sizes at different screen sizes.
- * This helps automate a bit of responsiveness.
- * The trick is to use the rem unit for size values, margin and padding.
- * Because rem is relative to the document font size
- * when we scale up or down the font size on the document
- * it will affect all properties using rem units for the values.
-*/
-
-/* I am using the em unit for breakpoints
- * The calculation is the following
- * screen size divided by browser base font size
- * As an example: a breakpoint at 980px
- * 980px / 16px = 61.25em
-*/
 
 /* 1200px / 16px = 75em */
 @media (max-width: 75em) {
@@ -107,6 +88,11 @@ img {
   width: 100%;
 }
 
+.code {
+  color: var(--main-grey);
+  transition: color 0.3s ease-out;
+}
+
 /* nav */
 
 .nav {
@@ -150,7 +136,7 @@ img {
 
 /* Acceuil section */
 
-.acceuil-section {
+.acceuil {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -161,7 +147,7 @@ img {
  
 }
 
-.acceuil-section > p {
+.acceuil > p {
   font-size: 3rem;
   font-weight: 200;
   font-style: italic;
@@ -171,25 +157,24 @@ img {
 
 /* Certifications section */
 
-.certifications-section {
+.certifications {
   text-align: center;
   padding: 10rem 2rem;
   background: var(--main-green);
 }
 
-.certifications-section-header {
+.certifications-header {
   max-width: 640px;
   margin: 0 auto 6rem auto;
   border-bottom: 0.2rem solid var(--main-white);
 }
 
 @media (max-width: 28.75em) {
-  .certifications-section-header {
+  .certifications-header {
     font-size: 4rem;
   }
 }
 
-/* "Automagic" image grid using no media queries */
 .certifications-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -201,7 +186,7 @@ img {
 }
 
 @media (max-width: 30.625em) {
-  .certifications-section {
+  .certifications {
     padding: 6rem 1rem;
   }
 
@@ -214,11 +199,6 @@ img {
   background: var(--main-grey);
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   border-radius: 2px;
-}
-
-.code {
-  color: var(--main-grey);
-  transition: color 0.3s ease-out;
 }
 
 .certification:hover .code {
@@ -236,28 +216,88 @@ img {
   padding: 2rem 0.5rem;
 }
 
+/* Experiences section */
 
-/* Projets section */
-
-.projets-section {
+.experiences {
   text-align: center;
   padding: 10rem 2rem;
   background: var(--main-grey);
 }
 
-.projets-section-header {
+.experiences-header {
   max-width: 640px;
   margin: 0 auto 6rem auto;
   border-bottom: 0.2rem solid var(--main-white);
 }
 
 @media (max-width: 28.75em) {
-  .projets-section-header {
+  .experiences-header {
     font-size: 4rem;
   }
 }
 
-/* "Automagic" image grid using no media queries */
+.experiences-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 4rem;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  margin-bottom: 6rem;
+}
+
+@media (max-width: 30.625em) {
+  .experiences {
+    padding: 6rem 1rem;
+  }
+
+  .experiences-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.experiences{
+  background: var(--main-grey);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
+}
+
+.experience:hover .code {
+  color: var(--main-green);
+}
+
+.experience-image {
+  height: calc(100% - 6.8rem);
+  width: 100%;
+  object-fit: cover;
+}
+
+.experience-title {
+  font-size: 2rem;
+  padding: 2rem 0.5rem;
+}
+
+
+/* Projets section */
+
+.projets {
+  text-align: center;
+  padding: 10rem 2rem;
+  background: var(--main-green);
+}
+
+.projets-header {
+  max-width: 640px;
+  margin: 0 auto 6rem auto;
+  border-bottom: 0.2rem solid var(--main-white);
+}
+
+@media (max-width: 28.75em) {
+  .projets-header {
+    font-size: 4rem;
+  }
+}
+
 .projets-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -269,7 +309,7 @@ img {
 }
 
 @media (max-width: 30.625em) {
-  .projets-section {
+  .projets {
     padding: 6rem 1rem;
   }
 
@@ -282,11 +322,6 @@ img {
   background: var(--main-grey);
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   border-radius: 2px;
-}
-
-.code {
-  color: var(--main-grey);
-  transition: color 0.3s ease-out;
 }
 
 .projet:hover .code {
@@ -312,12 +347,12 @@ img {
 
 .btn-show-all {
   font-size: 2rem;
-  background: var(--main-grey);
+  background: var(--main-green);
   transition: background 0.3s ease-out;
 }
 
 .btn-show-all:hover {
-  background: var(--main-green);
+  background: var(--main-grey);
 }
 
 .btn-show-all:hover > i {
@@ -332,7 +367,7 @@ img {
 
 /* Contact section */
 
-.contact-section {
+.contact {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -344,17 +379,17 @@ img {
   background: var(--main-grey);
 }
 
-.contact-section-header > h2 {
+.contact-header > h2 {
   font-size: 6rem;
 }
 
 @media (max-width: 28.75em) {
-  .contact-section-header > h2 {
+  .contact-header > h2 {
     font-size: 4rem;
   }
 }
 
-.contact-section-header > p {
+.contact-header > p {
   font-style: italic;
 }
 
